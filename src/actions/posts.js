@@ -1,5 +1,11 @@
-import { FETCH_ALL, CREATE, UPDATE, DELETE, LIKE } from "../constants/actionTypes";
-import * as api from "../api";
+import {
+  FETCH_ALL,
+  CREATE,
+  UPDATE,
+  DELETE,
+  LIKE,
+} from "../constants/actionTypes";
+import * as api from "../api/index.js";
 
 //Action creators i.e functions that return actions
 export const getPosts = () => async (dispatch) => {
@@ -14,7 +20,6 @@ export const getPosts = () => async (dispatch) => {
 export const createPost = (post) => async (dispatch) => {
   try {
     const { data } = await api.createPost(post);
-
     dispatch({ type: CREATE, payload: data });
   } catch (error) {
     console.log(error);
@@ -42,8 +47,9 @@ export const deletePost = (id) => async (dispatch) => {
 };
 
 export const likePost = (id) => async (dispatch) => {
+  const user = JSON.parse(localStorage.getItem('profile'));
   try {
-    const { data } = await api.likePost(id);
+    const { data } = await api.likePost(id, user?.token);
 
     dispatch({ type: LIKE, payload: data });
   } catch (error) {

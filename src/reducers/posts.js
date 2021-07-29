@@ -13,6 +13,9 @@ export const posts = (posts = [], action) => {
     case CREATE:
       return [...posts, action.payload];
     case UPDATE:
+      return posts.map((post) =>
+        post._id === action.payload._id ? action.payload : post
+      );
     case LIKE:
       return posts.map((post) =>
         post._id === action.payload._id ? action.payload : post
