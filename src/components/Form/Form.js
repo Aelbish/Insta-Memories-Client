@@ -80,6 +80,8 @@ const Form = ({ currentId, setCurrentId }) => {
           variant="outlined"
           label="Message"
           fullWidth
+          multiline
+          rows={4}
           value={postData.message}
           onChange={(e) =>
             setPostData({ ...postData, message: e.target.value })
@@ -106,7 +108,7 @@ const Form = ({ currentId, setCurrentId }) => {
         </div>
         <Button
           className={classes.buttonSubmit}
-          variant="contained"
+          variant="outlined"
           color="primary"
           size="large"
           type="submit"
@@ -116,7 +118,7 @@ const Form = ({ currentId, setCurrentId }) => {
         </Button>
         <Button
           className={classes.buttonSubmit}
-          variant="contained"
+          variant="outlined"
           color="secondary"
           size="small"
           onClick={clear}

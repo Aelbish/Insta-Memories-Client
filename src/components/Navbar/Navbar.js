@@ -63,7 +63,7 @@ const Navbar = () => {
               {user.result.name}
             </Typography>
             <Button
-              variant="contained"
+              variant="outlined"
               className={classes.logout}
               color="secondary"
               onClick={logout}
@@ -75,7 +75,7 @@ const Navbar = () => {
           <Button
             component={Link}
             to="/auth"
-            variant="contained"
+            variant="outlined"
             color="primary"
           >
             Sign In

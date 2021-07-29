@@ -130,7 +130,7 @@ const Auth = () => {
           <Button
             type="submit"
             fullWidth
-            variant="contained"
+            variant="outlined"
             color="primary"
             className={classes.submit}
           >
@@ -146,7 +146,7 @@ const Auth = () => {
                 onClick={renderProps.onClick}
                 disabled={renderProps.disabled}
                 startIcon={<Icon />}
-                variant="contained"
+                variant="outlined"
               >
                 Google Sign In
               </Button>
