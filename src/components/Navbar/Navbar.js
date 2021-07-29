@@ -20,7 +20,7 @@ const Navbar = () => {
 
   const logout = () => {
     dispatch({ type: actionType.LOGOUT });
-    history.push("/");
+    history.push("/auth");
     setUser(null);
   };
 
@@ -47,7 +47,7 @@ const Navbar = () => {
         >
           InstaMemories
         </Typography>
-        <img className={classes.image} src={memories} alt="icon" height="60" />
+        <img className={classes.image} src={memories} alt="icon" height="45" />
       </div>
       <Toolbar className={classes.toolbar}>
         {user ? (
@@ -63,7 +63,7 @@ const Navbar = () => {
               {user.result.name}
             </Typography>
             <Button
-              variant="outlined"
+              variant="contained"
               className={classes.logout}
               color="secondary"
               onClick={logout}
@@ -75,7 +75,7 @@ const Navbar = () => {
           <Button
             component={Link}
             to="/auth"
-            variant="outlined"
+            variant="contained"
             color="primary"
           >
             Sign In

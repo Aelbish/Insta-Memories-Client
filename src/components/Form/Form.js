@@ -3,6 +3,7 @@ import { TextField, Button, Typography, Paper } from "@material-ui/core";
 import FileBase from "react-file-base64";
 import { useDispatch, useSelector } from "react-redux";
 import { createPost, updatePost } from "../../actions/posts";
+import { useHistory } from "react-router-dom";
 import useStyles from "./styles";
 
 const Form = ({ currentId, setCurrentId }) => {
@@ -13,9 +14,10 @@ const Form = ({ currentId, setCurrentId }) => {
     selectedFile: "",
   });
   const post = useSelector((state) =>
-    currentId ? state.posts.find((p) => p._id === currentId) : null
+    currentId ? state.posts.posts.find((p) => p._id === currentId) : null
   );
   const dispatch = useDispatch();
+  const history = useHistory();
   const classes = useStyles();
   const user = JSON.parse(localStorage.getItem("profile"));
 
@@ -36,7 +38,7 @@ const Form = ({ currentId, setCurrentId }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (currentId === 0) {
-      dispatch(createPost({ ...postData, name: user?.result?.name }));
+      dispatch(createPost({ ...postData, name: user?.result?.name }, history));
       clear();
     } else {
       dispatch(
@@ -57,7 +59,7 @@ const Form = ({ currentId, setCurrentId }) => {
   }
 
   return (
-    <Paper className={classes.paper}>
+    <Paper className={classes.paper} elevation={6}>
       <form
         autoComplete="off"
         noValidate
@@ -108,7 +110,7 @@ const Form = ({ currentId, setCurrentId }) => {
         </div>
         <Button
           className={classes.buttonSubmit}
-          variant="outlined"
+          variant="contained"
           color="primary"
           size="large"
           type="submit"
@@ -118,7 +120,7 @@ const Form = ({ currentId, setCurrentId }) => {
         </Button>
         <Button
           className={classes.buttonSubmit}
-          variant="outlined"
+          variant="contained"
           color="secondary"
           size="small"
           onClick={clear}

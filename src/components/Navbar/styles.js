@@ -15,14 +15,14 @@ export default makeStyles((theme) => ({
     },
   },
   heading: {
-    color: "grey",
-    textDecoration: "none",
+    color: "gray",
+    textDecoration: "overline",
     fontSize: "2em",
-    fontWeight: 300,
+    fontWeight: 600,
   },
   image: {
     marginLeft: "10px",
-    marginTop: "5px",
+    marginTop: "0px",
   },
   toolbar: {
     display: "flex",

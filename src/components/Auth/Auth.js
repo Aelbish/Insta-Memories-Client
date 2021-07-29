@@ -39,7 +39,7 @@ const Auth = () => {
   const history = useHistory();
 
   const handleShowPassword = () => {
-    setShowPassword((prevShowPassword) => !prevShowPassword);
+    setShowPassword(!showPassword);
   };
 
   const handleSubmit = (event) => {
@@ -130,7 +130,7 @@ const Auth = () => {
           <Button
             type="submit"
             fullWidth
-            variant="outlined"
+            variant="contained"
             color="primary"
             className={classes.submit}
           >
@@ -146,7 +146,7 @@ const Auth = () => {
                 onClick={renderProps.onClick}
                 disabled={renderProps.disabled}
                 startIcon={<Icon />}
-                variant="outlined"
+                variant="contained"
               >
                 Google Sign In
               </Button>
