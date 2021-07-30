@@ -26,20 +26,21 @@ const initialState = {
 };
 
 const Auth = () => {
+  const [formData, setFormData] = useState(initialState);
+  const [isSignUp, setIsSignUp] = useState(false);
+  const dispatch = useDispatch();
+  const history = useHistory();
   const classes = useStyles();
 
   const [showPassword, setShowPassword] = useState(false);
-
-  const [isSignUp, setIsSignUp] = useState(false);
-
-  const [formData, setFormData] = useState(initialState);
-
-  const dispatch = useDispatch();
-
-  const history = useHistory();
-
   const handleShowPassword = () => {
     setShowPassword(!showPassword);
+  };
+
+  const switchMode = () => {
+    setFormData(initialState);
+    setIsSignUp((prevIsSignup) => !prevIsSignup);
+    setShowPassword(false);
   };
 
   const handleSubmit = (event) => {
@@ -56,12 +57,6 @@ const Auth = () => {
     setFormData({ ...formData, [event.target.name]: event.target.value });
   };
 
-  const switchMode = () => {
-    setFormData(initialState);
-    setIsSignUp((prevIsSignup) => !prevIsSignup);
-    setShowPassword(false);
-  };
-
   const googleSuccess = async (res) => {
     const result = res?.profileObj;
     const token = res?.tokenId;
@@ -75,6 +70,7 @@ const Auth = () => {
   };
 
   const googleFailure = (error) => {
+    console.log(error);
     console.log("Google Sign In was not successful, try again later.");
   };
 

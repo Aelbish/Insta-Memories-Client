@@ -15,8 +15,8 @@ export default makeStyles((theme) => ({
     },
   },
   heading: {
-    color: "gray",
-    textDecoration: "overline",
+    color: "black",
+    textDecoration: "none",
     fontSize: "2em",
     fontWeight: 600,
   },

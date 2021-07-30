@@ -24,6 +24,7 @@ const Post = ({ post, setCurrentId }) => {
   const dispatch = useDispatch();
   const history = useHistory();
   const user = JSON.parse(localStorage.getItem("profile"));
+
   const Likes = () => {
     if (post.likes.length > 0) {
       return post.likes.find(
@@ -52,13 +53,18 @@ const Post = ({ post, setCurrentId }) => {
     );
   };
 
-  const openPost = () => {
+  const openPost = (e) => {
     history.push(`/posts/${post._id}`);
   };
 
   return (
     <Card className={classes.card} raised elevation={6}>
-      <ButtonBase className={classes.cardAction} onClick={openPost}>
+      <ButtonBase
+        component="span"
+        name="test"
+        className={classes.cardAction}
+        onClick={openPost}
+      >
         <CardMedia
           className={classes.media}
           image={
@@ -75,13 +81,14 @@ const Post = ({ post, setCurrentId }) => {
         </div>
         {(user?.result?.googleId === post?.creator ||
           user?.result?._id === post?.creator) && (
-          <div className={classes.overlay2}>
+          <div className={classes.overlay2} name="edit">
             <Button
-              style={{ color: "white" }}
-              size="small"
-              onClick={() => {
+              onClick={(e) => {
+                e.stopPropagation();
                 setCurrentId(post._id);
               }}
+              style={{ color: "white" }}
+              size="small"
             >
               <MoreHorizIcon fontSize="medium" />
             </Button>
@@ -97,7 +104,7 @@ const Post = ({ post, setCurrentId }) => {
         </Typography>
         <CardContent>
           <Typography variant="body2" color="textSecondary" component="p">
-            {post.message}
+            {post.message.split(" ").splice(0, 20).join(" ")}...
           </Typography>
         </CardContent>
       </ButtonBase>
@@ -117,13 +124,13 @@ const Post = ({ post, setCurrentId }) => {
           user?.result?._id === post?.creator) && (
           <Button
             size="small"
-            color="primary"
+            color="secondary"
             onClick={() => {
               dispatch(deletePost(post._id));
             }}
           >
             <DeleteIcon fontSize="small" />
-            Delete
+            &nbsp;Delete
           </Button>
         )}
       </CardActions>

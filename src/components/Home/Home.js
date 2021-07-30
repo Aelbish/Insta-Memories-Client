@@ -8,6 +8,7 @@ import {
   AppBar,
   TextField,
   Button,
+  Typography,
 } from "@material-ui/core";
 import { useHistory, useLocation } from "react-router-dom";
 //for tag search
@@ -81,6 +82,9 @@ const Home = () => {
               position="static"
               color="inherit"
             >
+              <Typography gutterBottom variant="h6" align="center">
+                Search InstaMemories
+              </Typography>
               <TextField
                 name="search"
                 variant="outlined"
