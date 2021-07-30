@@ -1,6 +1,9 @@
 import axios from "axios";
 
-const API = axios.create({ baseURL: "http://localhost:5000" });
+//const API = axios.create({ baseURL: "http://localhost:5000" });
+const API = axios.create({
+  baseURL: "https://l20-instamemories.herokuapp.com/",
+});
 
 //this will execute before any requests defined below this i.e. fetchaPosts/ createPost ...
 API.interceptors.request.use((req) => {

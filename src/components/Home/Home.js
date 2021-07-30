@@ -88,7 +88,7 @@ const Home = () => {
               <TextField
                 name="search"
                 variant="outlined"
-                label="Search Memories"
+                label="Search by Title"
                 onKeyPress={handleKeyPress}
                 fullWidth
                 value={search}
@@ -101,7 +101,7 @@ const Home = () => {
                 value={tags}
                 onAdd={handleAdd}
                 onDelete={handleDelete}
-                label="Search Tags"
+                label="Search by Tags"
                 variant="outlined"
               />
               <Button

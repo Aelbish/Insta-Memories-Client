@@ -12,7 +12,7 @@ const CommentSection = ({ post }) => {
   const classes = useStyles();
   const commentsRef = useRef();
 
-  const handleClick = async () => {
+  const handleComment = async () => {
     const newComments = await dispatch(
       commentPost(`${user?.result?.name}: ${comment}`, post._id)
     );
@@ -57,7 +57,7 @@ const CommentSection = ({ post }) => {
             disabled={!comment.length}
             variant="contained"
             color="primary"
-            onClick={handleClick}
+            onClick={handleComment}
           >
             Comment
           </Button>
